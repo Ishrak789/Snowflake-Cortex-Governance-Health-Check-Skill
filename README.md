@@ -8,10 +8,10 @@ The agent discovers its own scope, runs a sequence of read-only checks, scores f
 
 ## What it checks
 
-- **Sensitive data visibility** — sensitivity and domain tags on tables and columns, tagging consistency
-- **Protection coverage** — masking policy and row access policy presence on sensitive fields
-- **Access risk** — broad grants, future grants that auto-widen access, sensitive data exposed to broadly granted roles
-- **Privilege hygiene** — over-provisioned or broad-scope roles flagged for least-privilege review
+- **Sensitive data visibility** - sensitivity and domain tags on tables and columns, tagging consistency
+- **Protection coverage** - masking policy and row access policy presence on sensitive fields
+- **Access risk** - broad grants, future grants that auto-widen access, sensitive data exposed to broadly granted roles
+- **Privilege hygiene** - over-provisioned or broad-scope roles flagged for least-privilege review
 
 ## How it works
 
@@ -59,8 +59,6 @@ Other example prompts:
 
 The skill produces a structured Governance Health Report: executive summary, scope reviewed, findings by category with severity, recommended next steps, and a limitations section listing any checks that could not be completed.
 
-See [`docs/design-and-evaluation.pdf`](docs/design-and-evaluation.pdf) for full screenshots of a live run against a demo Snowflake trial environment, including the generated report.
-
 ## Evaluation
 
 The skill was tested live in Cortex Code CLI against a real Snowflake trial. The evaluation plan covers six cases across happy-path, edge, and failure conditions:
@@ -75,11 +73,11 @@ In every failure case the workflow continued and recorded the issue as an explic
 
 ## Design principles
 
-- **Read-only** — never creates, alters, drops, grants, revokes, or modifies anything
-- **Metadata-driven** — discovers scope from metadata rather than hardcoding object names
-- **Graceful degradation** — unsupported or unavailable metadata becomes a limitation, not a crash
-- **Cautious risk language** — reports "no visible masking controls found," never "data is exposed," unless proven by visible metadata
-- **Business-readable output** — structured for both technical and non-technical stakeholders
+- **Read-only** - never creates, alters, drops, grants, revokes, or modifies anything
+- **Metadata-driven** - discovers scope from metadata rather than hardcoding object names
+- **Graceful degradation** - unsupported or unavailable metadata becomes a limitation, not a crash
+- **Cautious risk language** - reports "no visible masking controls found," never "data is exposed," unless proven by visible metadata
+- **Business-readable output** - structured for both technical and non-technical stakeholders
 
 ## Limitations
 
